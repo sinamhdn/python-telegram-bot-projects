@@ -1,10 +1,14 @@
+import os
+import logging
+from dotenv import load_dotenv
 from telegram.ext import (Application, CallbackQueryHandler, CommandHandler,
                           ContextTypes, ConversationHandler, MessageHandler, filters)
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove,
                       Update, InlineKeyboardButton, InlineKeyboardMarkup)
-import logging
 
-TOKEN = "7899293642:AAFjwQF98uKuUkTqxyH_jOILYbqqNwu1RI0"
+load_dotenv()
+
+TOKEN = os.getenv('TOKEN')
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)

@@ -1,4 +1,8 @@
+import os
+from dotenv import load_dotenv
 from telegram.ext import Application, MessageHandler, CommandHandler, filters
+
+load_dotenv()
 
 
 async def reply(update, context):
@@ -9,7 +13,7 @@ def main():
     """
     Handles the initial launch of the program (entry point).
     """
-    token = "7899293642:AAFjwQF98uKuUkTqxyH_jOILYbqqNwu1RI0"
+    token = os.getenv('TOKEN')
     application = Application.builder().token(token).concurrent_updates(
         True).read_timeout(30).write_timeout(30).build()
     application.add_handler(MessageHandler(filters.TEXT, reply))
